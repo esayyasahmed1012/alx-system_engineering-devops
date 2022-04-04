@@ -1,1 +1,1 @@
-this is a script to display hello world
+THIS IS USED TO DISPLAY HELLO WORLD
