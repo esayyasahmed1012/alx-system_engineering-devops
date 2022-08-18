@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-#prints Best School 10 times
+#prints Best School 10 time
 
 number=0
 until [ $number -eq 10 ]
