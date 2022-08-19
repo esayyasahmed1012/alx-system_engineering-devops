@@ -1,0 +1,3 @@
+#!/usr/bin/env bash
+# cannot use p s
+pgrep -l bash
