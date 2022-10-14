@@ -1,4 +1,4 @@
-#  a file in the /tmp directory 
+#  file in the /tmp directory 
 file { '/tmp/school':
   ensure  => 'file',
   mode    => '0744',
