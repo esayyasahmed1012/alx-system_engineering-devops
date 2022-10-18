@@ -1,7 +1,9 @@
 #!/usr/bin/env bash
-#install nginx and redirects to holberton school string
+# set up web server
 sudo apt-get -y update
 sudo apt-get -y install nginx
-file1=/usr/share/nginx/html/index.html
-sudo bash -c "echo 'Hello World!' > $file1"
-service nginx start
+
+mkdir -p /var/www/html
+sudo service nginx start
+echo "Hello World!" > /var/www/html/index.html
+
