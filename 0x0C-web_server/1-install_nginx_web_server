@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
-# Bash script that Install nginx on your web-01 server and requirements
-apt-get update -y
-apt-get install nginx -y
-echo "Hello World!" > /var/www/html/index.html
+#install nginx and redirects to holberton school string
+sudo apt-get -y update
+sudo apt-get -y install nginx
+file1=/usr/share/nginx/html/index.html
+sudo bash -c "echo 'Hello World!' > $file1"
 service nginx start
