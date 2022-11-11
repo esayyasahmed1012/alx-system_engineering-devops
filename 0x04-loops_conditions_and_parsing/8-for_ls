@@ -2,5 +2,5 @@
 # displays The content of the current director
 for i in *
 do
-    echo "$i" | cut -d'-' -f2
+    echo $i | cut -d'-' -f1
 done
