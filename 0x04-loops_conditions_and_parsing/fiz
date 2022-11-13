@@ -1,0 +1,16 @@
+#!/bin/env bash
+for (( i=1; i<100 ;i++));
+do 
+   echo $i
+   if [ $i%5 && $i%3 ]
+   then
+      echo "FIZZBUZZ"
+   fi
+   if [ $i%5 ]
+      echo "BUZZ"
+   fi
+   if [ $i%3 ]
+      echo "FIZ"
+   fi
+done 
+

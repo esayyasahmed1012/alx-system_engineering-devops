@@ -5,5 +5,5 @@ number=0
 until [ $number -eq 10 ]
 do
 	echo "Best School"
-	number=$(( number + 1 ))
+	number=$(( $number + 1 ))
 done
