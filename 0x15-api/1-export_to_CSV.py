@@ -1,24 +1,30 @@
 #!/usr/bin/python3
+""" Queries REST API for employee info, exports to CSV
+    "USER_ID","USERNAME","TASK_COMPLETED_STATUS","TASK_TITLE"
+    argv 1 = int employee ID
 """
-The following extends the Python script in task 0
-to export data in CSV format
-"""
-import csv
-import requests
-from sys import argv
-
-
 if __name__ == "__main__":
-    R = requests.get('https://jsonplaceholder.typicode.com/users/{:}'
-                     .format(argv[1])).json()
-    R_two = requests.get(
-        'https://jsonplaceholder.typicode.com/todos/?userId={:}'
-        .format(argv[1])).json()
+    import csv
+    import requests as r
+    from sys import argv
 
-    userID = argv[1]
-    name = R.get('username')
-    with open('{:}.csv'.format(argv[1]), mode='w') as user_id_file:
-        user_writer = csv.writer(user_id_file, quoting=csv.QUOTE_ALL)
-        for task in R_two:
-            user_writer.writerow([userID, name, task.get('completed'),
-                                  task.get('title')])
+    user_id = argv[1]
+    # Finds employee username by "id" param in /users/
+    name_q = r.get("https://jsonplaceholder.typicode.com/users/{}/"
+                   .format(user_id))
+    data = name_q.json()
+    username = data.get("username")
+
+    # Finds employee tasks by "userID" param; /users/ & /todo/ are linked
+    url = "https://jsonplaceholder.typicode.com/users/1/todos/"
+    task_q = r.get(url, params={'userId': user_id})
+    data = task_q.json()
+
+    # Creates csv file, writes request data into it row by row
+
+    with open('{}.csv'.format(user_id), 'w', newline='') as csvfile:
+        csv_data = csv.writer(csvfile, delimiter=',', quotechar='"',
+                              quoting=csv.QUOTE_ALL)
+        for elem in data:
+            csv_data.writerow([elem["userId"], username,
+                               elem["completed"], elem["title"]])
